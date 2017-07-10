@@ -41,13 +41,13 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.MyView
         public MyViewHolder(View itemView) {
             super(itemView);
             txtViewName = (TextView) itemView.findViewById(R.id.txtViewName);
-            txtViewAge = (TextView) itemView.findViewById(R.id.txtViewAge);
+          //  txtViewAge = (TextView) itemView.findViewById(R.id.txtViewAge);
         }
     }
     @Override
     public void onBindViewHolder(MyViewHolder viewHolder, int position) {
-        viewHolder.txtViewName.setText(customerModelList.get(position).getNameSave());
-        viewHolder.txtViewAge.setText(customerModelList.get(position).getAgeSave());
+        viewHolder.txtViewName.setText(customerModelList.get(position).toString());
+//        viewHolder.txtViewAge.setText(customerModelList.get(position).getAgeSave());
 
     }
 }

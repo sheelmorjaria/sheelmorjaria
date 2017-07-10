@@ -1,5 +1,7 @@
 package com.example.user.uiengineer;
 
+import android.util.Log;
+
 import com.example.user.uiengineer.model.CustomerModel;
 
 import java.util.ArrayList;
@@ -15,6 +17,7 @@ import io.realm.RealmResults;
 public class RealmHelper {
     Realm realm;
     ArrayList<CustomerModel> arrayList;
+    ArrayList<String> arrayListTwo;
 
     public RealmHelper(Realm realm) {
         this.realm = realm;
@@ -28,16 +31,16 @@ public class RealmHelper {
             }
         });
     }
-//    public ArrayList<String> getCustomers(){
-//        ArrayList<String> arrayList = new ArrayList<>();
-//
-//        RealmResults<CustomerModel> c = realm.where(CustomerModel.class).findAll();
-//        for(CustomerModel customerModel: c ){
-//            arrayList.add(customerModel.getName());
-//            arrayList.add(customerModel.getEmail());
-//        }
-//        return arrayList;
-//    }
+    public ArrayList<String> getCustomers(){
+        ArrayList<String> arrayList = new ArrayList<>();
+
+        RealmResults<CustomerModel> c = realm.where(CustomerModel.class).findAll();
+        for(CustomerModel customerModel: c ){
+            arrayList.add(customerModel.getNameSave());
+            arrayList.add(customerModel.getAgeSave());
+        }
+        return arrayList;
+    }
 //    public RealmList<CustomerModel> retrieveCustomers(){
 //        customerModelRealmList = new RealmList<>();
 //        RealmResults<CustomerModel> result = realm.where(CustomerModel.class).findAll();

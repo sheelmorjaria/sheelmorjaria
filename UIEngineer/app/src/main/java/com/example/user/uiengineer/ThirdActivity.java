@@ -20,11 +20,13 @@ import com.example.user.uiengineer.model.CustomerAdapter;
 import com.example.user.uiengineer.model.CustomerModel;
 import com.hbb20.CountryCodePicker;
 
+import java.io.ByteArrayOutputStream;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
+import io.realm.internal.IOException;
 
 public class ThirdActivity extends AppCompatActivity {
     int counter=0;
@@ -51,6 +53,8 @@ public class ThirdActivity extends AppCompatActivity {
     ArrayList<CustomerModel> arrayList;
     RecyclerView myRecyclerView;
     Intent intent;
+    ByteArrayOutputStream stream;
+    byte[] byteArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,16 +71,7 @@ public class ThirdActivity extends AppCompatActivity {
         maleGender = (RadioButton) findViewById(R.id.rbMale);
         femaleGender = (RadioButton) findViewById(R.id.rbFemale);
         otherGender = (RadioButton) findViewById(R.id.rbOther);
-        byte[] key = new byte[64];
-        new SecureRandom().nextBytes(key);
 
-        RealmConfiguration config = new RealmConfiguration.Builder()
-                .encryptionKey(key)
-                .build();
-        Realm.deleteRealm(config);
-        realm = Realm.getInstance(config);
-
-        realmHelper = new RealmHelper(realm);
         datePicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,33 +95,36 @@ public class ThirdActivity extends AppCompatActivity {
         fabSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                customerModel = new CustomerModel(name.getText().toString(),
-                        age.getText().toString(), countryNameSave, genderSave, postalAddress.getText().toString());
+                customerModel = new CustomerModel();
+                realm = Realm.getDefaultInstance();
+                realmHelper = new RealmHelper(realm);
                 realmHelper.saveData(customerModel);
                 arrayList = realmHelper.findCustomers();
-                Log.i("modelprinted",arrayList.toString());
+//                Log.i("modelprinted",arrayList.toString());
                 intent = new Intent(ThirdActivity.this, DatabaseRecyclerView.class);
-                startActivityForResult(intent,VIEW_RECYCLER);
+                intent.putExtra("customer info", customerModel);
+                startActivity(intent);
 
             }
         });
 
     }
-    public void initializeRecyclerView(){
-        myRecyclerView=(RecyclerView)findViewById(R.id.Results);
-        myRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        myRecyclerView.setAdapter(new CustomerAdapter(arrayList));
-    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         if (requestCode == CAMERA_REQUEST) {
+            try{
+                photo = (Bitmap) data.getExtras().get("data");
+                stream = new ByteArrayOutputStream();
+                photo.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                byteArray = stream.toByteArray();
+            }
+           catch(IOException exception){
+               Log.i("Error", "IOException");
+           }
+        }
 
-            photo = (Bitmap) data.getExtras().get("data");
-        }
-        else  {
-            initializeRecyclerView();
-        }
     }
 
 

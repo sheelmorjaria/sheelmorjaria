@@ -1,5 +1,8 @@
 package com.example.user.uiengineer.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -10,18 +13,54 @@ import io.realm.annotations.Required;
  * Created by user on 7/9/2017.
  */
 
-public class CustomerModel extends RealmObject {
-    @Required
+public class CustomerModel extends RealmObject implements Parcelable {
+
     String nameSave;
-    @Required
+
     String ageSave;
-    @Required
+
     String countryNameSave;
-    @Required
     String genderSave;
-    @Required
+
     String addressSave;
     String pathtoPhoto;
+
+
+    protected CustomerModel(Parcel in) {
+        nameSave = in.readString();
+        ageSave = in.readString();
+        countryNameSave = in.readString();
+        genderSave = in.readString();
+        addressSave = in.readString();
+        pathtoPhoto = in.readString();
+    }
+
+    public static final Creator<CustomerModel> CREATOR = new Creator<CustomerModel>() {
+        @Override
+        public CustomerModel createFromParcel(Parcel in) {
+            return new CustomerModel(in);
+        }
+
+        @Override
+        public CustomerModel[] newArray(int size) {
+            return new CustomerModel[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel out, int flags) {
+        out.writeString(nameSave);
+        out.writeString(ageSave);
+        out.writeString(countryNameSave);
+        out.writeString(genderSave);
+        out.writeString(addressSave);
+        out.writeString(pathtoPhoto);
+    }
 
     public CustomerModel(){
 
@@ -39,21 +78,7 @@ public class CustomerModel extends RealmObject {
                 '}';
     }
 
-    public CustomerModel(String nameSave, String ageSave, String countryNameSave, String genderSave, String addressSave, String pathtoPhoto) {
-        this.nameSave = nameSave;
-        this.ageSave = ageSave;
-        this.countryNameSave = countryNameSave;
-        this.genderSave = genderSave;
-        this.addressSave = addressSave;
-        this.pathtoPhoto = pathtoPhoto;
-    }
-    public CustomerModel(String nameSave, String ageSave, String countryNameSave, String genderSave, String addressSave ) {
-        this.nameSave = nameSave;
-        this.ageSave = ageSave;
-        this.countryNameSave = countryNameSave;
-        this.genderSave = genderSave;
-        this.addressSave = addressSave;
-    }
+
     public String getPathtoPhoto() {
         return pathtoPhoto;
     }
