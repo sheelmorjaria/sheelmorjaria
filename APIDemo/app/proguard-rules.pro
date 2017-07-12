@@ -32,3 +32,6 @@
 
 # for DexGuard only
 -keepresourcexmlelements manifest/application/meta-data@value=GlideModule
+
+-dontwarn java.lang.invoke.*
+-dontwarn **$$Lambda$*

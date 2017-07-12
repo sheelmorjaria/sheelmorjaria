@@ -8,7 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
 import com.example.user.apidemo.adapters.CakesAdapter;
-import com.example.user.apidemo.model.CakesModel;
+import com.example.user.apidemo.model.CakeModel;
+import com.example.user.apidemo.realm.RealmHelper;
 import com.example.user.apidemo.service.ConnectionService;
 import com.example.user.apidemo.service.RequestInterface;
 import com.github.pwittchen.reactivenetwork.library.rx2.ReactiveNetwork;
@@ -19,18 +20,24 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
+import io.realm.Realm;
+import io.realm.RealmResults;
 
 public class MainActivity extends AppCompatActivity {
 private RequestInterface requestInterface;
     RecyclerView myRecyclerView;
     CakesAdapter cakeAdapter;
+    Realm realm;
+    RealmHelper realmHelper;
+    RealmResults<CakeModel> results;
     private SwipeRefreshLayout swipeRefreshLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recyclerview);
         requestInterface = ConnectionService.getConnection();
-
+        realm = Realm.getDefaultInstance();
+        realmHelper = new RealmHelper(realm);
         swipeRefreshLayout=(SwipeRefreshLayout)findViewById(R.id.swipeRefreshCakes);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -56,23 +63,44 @@ private RequestInterface requestInterface;
                             Toast.makeText(MainActivity.this,"network connected",Toast.LENGTH_LONG).show();
                         }
                         else{
+                            //load data from realm
+
                             Toast.makeText(MainActivity.this, "network unavailable",Toast.LENGTH_LONG).show();
+                            if(realm!=null){
+                               realm =Realm.getDefaultInstance();
+                                results = realm.where(CakeModel.class).findAll();
+                                List<CakeModel> listCakes = realm.copyFromRealm(results);
+                                cakeAdapter = new CakesAdapter(listCakes, getApplicationContext());
+                                myRecyclerView =(RecyclerView)findViewById(R.id.myRecyclerView);
+                                myRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                                myRecyclerView.setAdapter(cakeAdapter);
+
+                            }
                         }
                     }
                 });
     }
+    public void initRecyclerView(CakesAdapter cakeAdapter){
+        myRecyclerView =(RecyclerView)findViewById(R.id.myRecyclerView);
+        myRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        myRecyclerView.setAdapter(cakeAdapter);
+    }
 
-
-    private void onSuccess(List<CakesModel> cakesModels) {
+    private void onSuccess(List<CakeModel> cakesModels) {
         //call recyclerview
-        //if no network save api data to realm
-            cakeAdapter =new CakesAdapter(cakesModels, getApplicationContext());
-            myRecyclerView =(RecyclerView)findViewById(R.id.myRecyclerView);
-            myRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-            myRecyclerView.setAdapter(cakeAdapter);
+        //if no  network save api data to realm
 
+        cakeAdapter = new CakesAdapter(cakesModels,getApplicationContext());
+            initRecyclerView(cakeAdapter);
+        realmHelper = new RealmHelper(realm);
+
+      for(CakeModel cakeModel: cakesModels){
+            realmHelper.saveData(cakeModel);
+       }
 
     }
+
+
     private void onError(Throwable throwable){
 
     }

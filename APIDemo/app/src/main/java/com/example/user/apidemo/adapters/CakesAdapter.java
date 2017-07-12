@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.user.apidemo.R;
-import com.example.user.apidemo.model.CakesModel;
+import com.example.user.apidemo.model.CakeModel;
 
 import java.util.List;
 
@@ -20,14 +20,14 @@ import java.util.List;
 
 public class CakesAdapter extends RecyclerView.Adapter<CakesAdapter.MyViewHolder>
 {
-    List<CakesModel> cakesModelList;
+    List<CakeModel> cakesModelList;
     Context context;
     @Override
     public void onBindViewHolder(CakesAdapter.MyViewHolder holder, int position, List<Object> payloads) {
         super.onBindViewHolder(holder, position, payloads);
     }
 
-    public CakesAdapter(List<CakesModel> cakesModelArrayList, Context applicationContext) {
+    public CakesAdapter(List<CakeModel> cakesModelArrayList, Context applicationContext) {
         this.cakesModelList = cakesModelArrayList;
         this.context=applicationContext;
             }

@@ -1,6 +1,6 @@
 package com.example.user.apidemo.service;
 
-import com.example.user.apidemo.model.CakesModel;
+import com.example.user.apidemo.model.CakeModel;
 import com.example.user.apidemo.model.Constants;
 
 import java.util.List;
@@ -16,6 +16,6 @@ public interface RequestInterface
 {
 
  @GET(Constants.CAKELIST_API)
-    Observable<List<CakesModel>> getCakelist();
+    Observable<List<CakeModel>> getCakelist();
 
 }
