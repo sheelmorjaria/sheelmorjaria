@@ -1,6 +1,10 @@
-package com.example.user.apidemo.service;
+package com.example.user.imdbmovies.movielist.service;
 
-import com.example.user.apidemo.model.Constants;
+/**
+ * Created by user on 7/13/2017.
+ */
+
+import com.example.user.imdbmovies.movielist.model.Constants;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import okhttp3.OkHttpClient;

@@ -24,21 +24,22 @@ import io.realm.Realm;
 import io.realm.RealmResults;
 
 public class MainActivity extends AppCompatActivity {
-private RequestInterface requestInterface;
+    private RequestInterface requestInterface;
     RecyclerView myRecyclerView;
     CakesAdapter cakeAdapter;
     Realm realm;
     RealmHelper realmHelper;
     RealmResults<CakeModel> results;
     private SwipeRefreshLayout swipeRefreshLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recyclerview);
-        requestInterface = ConnectionService.getConnection();
+            requestInterface = ConnectionService.getConnection();
         realm = Realm.getDefaultInstance();
         realmHelper = new RealmHelper(realm);
-        swipeRefreshLayout=(SwipeRefreshLayout)findViewById(R.id.swipeRefreshCakes);
+        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshCakes);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -48,40 +49,39 @@ private RequestInterface requestInterface;
 
     }
 
-    public void updateOperation(){
+    public void updateOperation() {
         ReactiveNetwork.observeInternetConnectivity()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<Boolean>(){
-                    @Override public void accept(@NonNull Boolean isConnectedToInternet) {
-                        if(isConnectedToInternet){
+                .subscribe(new Consumer<Boolean>() {
+                    @Override
+                    public void accept(@NonNull Boolean isConnectedToInternet) {
+                        if (isConnectedToInternet) {
                             // do something with isConnectedToInternet value
                             requestInterface.getCakelist()
                                     .observeOn(AndroidSchedulers.mainThread())
                                     .subscribeOn(Schedulers.newThread())
-                                    .subscribe(MainActivity.this::onSuccess,MainActivity.this::onError);
-                            Toast.makeText(MainActivity.this,"network connected",Toast.LENGTH_LONG).show();
-                        }
-                        else{
+                                    .subscribe(MainActivity.this::onSuccess, MainActivity.this::onError);
+                            Toast.makeText(MainActivity.this, "network connected", Toast.LENGTH_LONG).show();
+                        } else {
                             //load data from realm
 
-                            Toast.makeText(MainActivity.this, "network unavailable",Toast.LENGTH_LONG).show();
-                            if(realm!=null){
-                               realm =Realm.getDefaultInstance();
+                            Toast.makeText(MainActivity.this, "network unavailable", Toast.LENGTH_LONG).show();
+                            if (realm != null) {
+                                realm = Realm.getDefaultInstance();
                                 results = realm.where(CakeModel.class).findAll();
                                 List<CakeModel> listCakes = realm.copyFromRealm(results);
                                 cakeAdapter = new CakesAdapter(listCakes, getApplicationContext());
-                                myRecyclerView =(RecyclerView)findViewById(R.id.myRecyclerView);
-                                myRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                                myRecyclerView.setAdapter(cakeAdapter);
+                                initRecyclerView(cakeAdapter);
 
                             }
                         }
                     }
                 });
     }
-    public void initRecyclerView(CakesAdapter cakeAdapter){
-        myRecyclerView =(RecyclerView)findViewById(R.id.myRecyclerView);
+
+    public void initRecyclerView(CakesAdapter cakeAdapter) {
+        myRecyclerView = (RecyclerView) findViewById(R.id.myRecyclerView);
         myRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         myRecyclerView.setAdapter(cakeAdapter);
     }
@@ -90,18 +90,19 @@ private RequestInterface requestInterface;
         //call recyclerview
         //if no  network save api data to realm
 
-        cakeAdapter = new CakesAdapter(cakesModels,getApplicationContext());
-            initRecyclerView(cakeAdapter);
+        cakeAdapter = new CakesAdapter(cakesModels, getApplicationContext());
+        initRecyclerView(cakeAdapter);
         realmHelper = new RealmHelper(realm);
 
-      for(CakeModel cakeModel: cakesModels){
+        for (CakeModel cakeModel : cakesModels) {
             realmHelper.saveData(cakeModel);
-       }
+        }
+        swipeRefreshLayout.setRefreshing(false);
 
     }
 
 
-    private void onError(Throwable throwable){
-
+    private void onError(Throwable throwable) {
+        swipeRefreshLayout.setRefreshing(false);
     }
 }
