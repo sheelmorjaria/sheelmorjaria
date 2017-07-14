@@ -33,7 +33,7 @@ public class CakeListPresenterImplementer implements ICakeListPresenter {
     }
     @Override
     public void performCakeListDisplay() {
-        updateOperation();;
+        updateOperation();
     }
     public void updateOperation() {
         ReactiveNetwork.observeInternetConnectivity()
