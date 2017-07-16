@@ -11,5 +11,6 @@ import java.util.List;
 public interface IMusicListPresenter extends MVPPresenter<IMusicListView>
 {
     void performMusicListDisplay();
+    void performResultsListDisplay();
 
 }

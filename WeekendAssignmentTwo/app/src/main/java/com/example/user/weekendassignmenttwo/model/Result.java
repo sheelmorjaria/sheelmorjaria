@@ -8,7 +8,10 @@ package com.example.user.weekendassignmenttwo.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Result {
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
+public class Result extends RealmObject {
 
     @SerializedName("wrapperType")
     @Expose
@@ -25,6 +28,7 @@ public class Result {
     @SerializedName("trackId")
     @Expose
     private Integer trackId;
+    @PrimaryKey
     @SerializedName("artistName")
     @Expose
     private String artistName;

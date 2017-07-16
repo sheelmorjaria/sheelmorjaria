@@ -17,8 +17,12 @@ import com.example.user.weekendassignmenttwo.MVP.Interactor.Interactor_Impl;
 import com.example.user.weekendassignmenttwo.adapters.ResultListAdapter;
 import com.example.user.weekendassignmenttwo.model.MusicList;
 import com.example.user.weekendassignmenttwo.model.Result;
+import com.example.user.weekendassignmenttwo.realm.RealmHelper;
 
 import java.util.List;
+
+import io.realm.Realm;
+import io.realm.RealmResults;
 
 /**
  * Created by sheel on 7/16/2017.
@@ -31,6 +35,9 @@ public class ClassicFragment extends Fragment implements IMusicListView {
     RecyclerView myRecyclerView;
     ClassicMusicListPresenter_Impl iMusicListPresenter_;
     List<Result> resulted;
+    Realm realm;
+    RealmHelper realmHelper;
+    RealmResults<Result> results;
     public ClassicFragment() {
     }
 

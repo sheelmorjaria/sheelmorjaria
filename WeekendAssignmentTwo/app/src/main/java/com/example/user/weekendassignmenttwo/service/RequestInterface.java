@@ -22,6 +22,9 @@ public interface RequestInterface {
     Observable<MusicList> getPopMusicResults();
     @GET(Constants.ROCKMUSICLIST_API)
     Observable<MusicList> getRockMusicResults();
+    @GET(Constants.CLASSICMUSICLIST_API)
+    Observable<List<Result>> getResults();
+
 //    @GET(Constants.MUSICLIST_API)
 //    Observable<List<Result>> getArtistName;
 

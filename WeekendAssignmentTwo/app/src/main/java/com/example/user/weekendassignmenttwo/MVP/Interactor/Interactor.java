@@ -16,5 +16,6 @@ public interface Interactor {
     Observable<MusicList> getPopResults();
     Observable<MusicList> getRockResults();
     Observable<MusicList> getClassicResults();
+    Observable<List<Result>> getResults();
 
 }

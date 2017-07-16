@@ -27,7 +27,7 @@ public class Interactor_Impl implements Interactor{
     public Observable<MusicList> getPopResults(){return requestInterface.getPopMusicResults();}
     public Observable<MusicList> getClassicResults(){return requestInterface.getClassicMusicResults();}
     public Observable<MusicList> getRockResults(){return requestInterface.getRockMusicResults();}
-
+    public Observable<List<Result>> getResults(){return  requestInterface.getResults();}
     public Interactor_Impl() {
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
         httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);

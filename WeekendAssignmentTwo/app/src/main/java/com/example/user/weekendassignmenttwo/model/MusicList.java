@@ -9,7 +9,9 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class MusicList {
+import io.realm.RealmObject;
+
+public class MusicList extends RealmObject{
 
     @SerializedName("resultCount")
     @Expose
