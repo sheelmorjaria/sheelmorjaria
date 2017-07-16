@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.user.weekendassignmenttwo.MVP.Interactor.ClassicMusicListPresenter_Impl;
 import com.example.user.weekendassignmenttwo.MVP.Interactor.PopMusicListPresenter_Impl;
 import com.example.user.weekendassignmenttwo.MVP.Interactor.IMusicListView;
 import com.example.user.weekendassignmenttwo.MVP.Interactor.Interactor_Impl;
@@ -28,7 +29,7 @@ public class ClassicFragment extends Fragment implements IMusicListView {
     ResultListAdapter resultListAdapter;
     Interactor_Impl interactor_;
     RecyclerView myRecyclerView;
-    PopMusicListPresenter_Impl iMusicListPresenter_;
+    ClassicMusicListPresenter_Impl iMusicListPresenter_;
     List<Result> resulted;
     public ClassicFragment() {
     }
@@ -73,7 +74,7 @@ public class ClassicFragment extends Fragment implements IMusicListView {
         interactor_ = new Interactor_Impl();
         myRecyclerView = (RecyclerView) getView().findViewById(R.id.recyclerview);
         myRecyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
-        iMusicListPresenter_= new PopMusicListPresenter_Impl(interactor_);
+        iMusicListPresenter_= new ClassicMusicListPresenter_Impl(interactor_);
         iMusicListPresenter_.attachView(this);
         iMusicListPresenter_.performMusicListDisplay();
     }

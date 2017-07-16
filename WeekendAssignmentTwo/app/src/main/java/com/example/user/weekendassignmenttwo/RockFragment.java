@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import com.example.user.weekendassignmenttwo.MVP.Interactor.PopMusicListPresenter_Impl;
 import com.example.user.weekendassignmenttwo.MVP.Interactor.IMusicListView;
 import com.example.user.weekendassignmenttwo.MVP.Interactor.Interactor_Impl;
+import com.example.user.weekendassignmenttwo.MVP.Interactor.RockMusicListPresenter_Impl;
 import com.example.user.weekendassignmenttwo.adapters.ResultListAdapter;
 import com.example.user.weekendassignmenttwo.model.MusicList;
 import com.example.user.weekendassignmenttwo.model.Result;
@@ -28,7 +29,7 @@ public class RockFragment extends Fragment implements IMusicListView {
     ResultListAdapter resultListAdapter;
     Interactor_Impl interactor_;
     RecyclerView myRecyclerView;
-    PopMusicListPresenter_Impl iMusicListPresenter_;
+    RockMusicListPresenter_Impl iMusicListPresenter_;
     List<Result> resulted;
     public RockFragment() {
     }
@@ -73,7 +74,7 @@ public class RockFragment extends Fragment implements IMusicListView {
         interactor_ = new Interactor_Impl();
         myRecyclerView = (RecyclerView) getView().findViewById(R.id.recyclerview);
         myRecyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
-        iMusicListPresenter_= new PopMusicListPresenter_Impl(interactor_);
+        iMusicListPresenter_= new RockMusicListPresenter_Impl(interactor_);
         iMusicListPresenter_.attachView(this);
         iMusicListPresenter_.performMusicListDisplay();
     }
