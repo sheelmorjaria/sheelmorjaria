@@ -25,19 +25,19 @@ public class MainActivity extends AppCompatActivity {
                 case rock:
                     RockFragment rockFragment = new RockFragment();
                     fragmentManager.beginTransaction()
-                            .add(R.id.fragment_container , rockFragment)
+                            .add(R.id.container , rockFragment)
                             .commit();
                     return true;
                 case R.id.pop:
-                    PopFragment popFragment= new PopFragment();
+                  PopFragment popFragment= new PopFragment();
                     fragmentManager.beginTransaction()
-                            .replace(R.id.fragment_container , popFragment)
+                            .replace(R.id.container , popFragment)
                             .commit();
                     return true;
                 case R.id.classic:
                     ClassicFragment classicFragment = new ClassicFragment();
                     fragmentManager.beginTransaction()
-                            .replace(R.id.fragment_container , classicFragment)
+                            .replace(R.id.container , classicFragment)
                             .commit();                    return true;
             }
             return false;

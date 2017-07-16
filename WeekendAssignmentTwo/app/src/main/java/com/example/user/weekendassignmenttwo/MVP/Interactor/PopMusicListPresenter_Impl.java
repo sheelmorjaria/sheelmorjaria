@@ -1,6 +1,7 @@
 package com.example.user.weekendassignmenttwo.MVP.Interactor;
 
 import com.example.user.weekendassignmenttwo.model.MusicList;
+import com.example.user.weekendassignmenttwo.model.Result;
 import com.github.pwittchen.reactivenetwork.library.rx2.ReactiveNetwork;
 
 import java.util.List;
@@ -14,12 +15,15 @@ import io.reactivex.schedulers.Schedulers;
  * Created by user on 7/14/2017.
  */
 
-public class IMusicListPresenter_Impl implements IMusicListPresenter {
+public class PopMusicListPresenter_Impl implements IMusicListPresenter {
     Interactor_Impl interactorImpl_;
     IMusicListView iMusicListView;
+
+
     @Override
     public void attachView(IMusicListView mvpView) {
         this.iMusicListView= mvpView;
+
     }
 
     @Override
@@ -27,7 +31,7 @@ public class IMusicListPresenter_Impl implements IMusicListPresenter {
 
     }
 
-    public IMusicListPresenter_Impl(Interactor_Impl interactorImpl_) {
+    public PopMusicListPresenter_Impl(Interactor_Impl interactorImpl_) {
         this.interactorImpl_ = interactorImpl_;
     }
     @Override
@@ -43,7 +47,7 @@ public class IMusicListPresenter_Impl implements IMusicListPresenter {
                     public void accept(@NonNull Boolean isConnectedToInternet) {
                         if (isConnectedToInternet) {
                             // do something with isConnectedToInternet value
-                            interactorImpl_.getMusicList()
+                            interactorImpl_.getPopResults()
                                     .observeOn(AndroidSchedulers.mainThread())
                                     .subscribeOn(Schedulers.newThread())
                                     .subscribe(this::onSuccess, this::onError);
@@ -53,8 +57,8 @@ public class IMusicListPresenter_Impl implements IMusicListPresenter {
                     private void onError(Throwable throwable) {
                     }
 
-                    private void onSuccess(List<MusicList> musicList) {
-                        iMusicListView.onFetchDataSuccess(musicList);
+                    private void onSuccess(MusicList results) {
+                        iMusicListView.onFetchDataSuccess(results);
 
                     }
                 });

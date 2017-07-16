@@ -1,5 +1,9 @@
 package com.example.user.weekendassignmenttwo.MVP.Interactor;
 
+import com.example.user.weekendassignmenttwo.model.MusicList;
+
+import java.util.List;
+
 /**
  * Created by user on 7/14/2017.
  */

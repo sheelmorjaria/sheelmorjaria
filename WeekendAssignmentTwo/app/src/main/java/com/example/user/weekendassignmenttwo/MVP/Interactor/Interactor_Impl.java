@@ -2,6 +2,7 @@ package com.example.user.weekendassignmenttwo.MVP.Interactor;
 
 import com.example.user.weekendassignmenttwo.model.Constants;
 import com.example.user.weekendassignmenttwo.model.MusicList;
+import com.example.user.weekendassignmenttwo.model.Result;
 import com.example.user.weekendassignmenttwo.service.RequestInterface;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
@@ -23,10 +24,9 @@ public class Interactor_Impl implements Interactor{
     static Retrofit retrofit;
 
     @Override
-    public Observable<List<MusicList>> getMusicList() {
-        return requestInterface.getMusicList();
-    }
-
+    public Observable<MusicList> getPopResults(){return requestInterface.getPopMusicResults();}
+    public Observable<MusicList> getClassicResults(){return requestInterface.getClassicMusicResults();}
+    public Observable<MusicList> getRockResults(){return requestInterface.getRockMusicResults();}
 
     public Interactor_Impl() {
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
