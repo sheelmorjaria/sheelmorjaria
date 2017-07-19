@@ -1,6 +1,7 @@
 package com.example.user.weekendassignmenttwo.MVP.Interactor;
 
 import com.example.user.weekendassignmenttwo.model.MusicList;
+import com.example.user.weekendassignmenttwo.model.Result;
 
 import java.util.List;
 
@@ -10,7 +11,7 @@ import java.util.List;
 
 public interface IMusicListView  extends MVPView {
         void onFetchDataInProgress();
-        void onFetchDataSuccess(List<MusicList> musicList);
+        void onFetchDataSuccess(MusicList results);
         void onFetchDataError(Throwable throwable);
         void onFetchDataCompleted();
 

@@ -1,6 +1,7 @@
 package com.example.user.weekendassignmenttwo.MVP.Interactor;
 
 import com.example.user.weekendassignmenttwo.model.MusicList;
+import com.example.user.weekendassignmenttwo.model.Result;
 import com.github.pwittchen.reactivenetwork.library.rx2.ReactiveNetwork;
 
 import java.util.List;
@@ -11,15 +12,21 @@ import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * Created by user on 7/14/2017.
+ * Created by sheel on 7/16/2017.
  */
 
-public class IMusicListPresenter_Impl implements IMusicListPresenter {
+public class IResultListPresenter_Impl implements IResultListPresenter {
     Interactor_Impl interactorImpl_;
-    IMusicListView iMusicListView;
+    IResultListView iResultListView;
+
     @Override
-    public void attachView(IMusicListView mvpView) {
-        this.iMusicListView= mvpView;
+    public void attachView(IResultListView mvpView) {
+        this.iResultListView = mvpView;
+
+    }
+
+    public IResultListPresenter_Impl(Interactor_Impl interactorImpl_) {
+        this.interactorImpl_ = interactorImpl_;
     }
 
     @Override
@@ -27,13 +34,11 @@ public class IMusicListPresenter_Impl implements IMusicListPresenter {
 
     }
 
-    public IMusicListPresenter_Impl(Interactor_Impl interactorImpl_) {
-        this.interactorImpl_ = interactorImpl_;
-    }
     @Override
-    public void performMusicListDisplay() {
+    public void performResultListDisplay() {
         updateOperation();
     }
+
     public void updateOperation() {
         ReactiveNetwork.observeInternetConnectivity()
                 .subscribeOn(Schedulers.io())
@@ -43,7 +48,7 @@ public class IMusicListPresenter_Impl implements IMusicListPresenter {
                     public void accept(@NonNull Boolean isConnectedToInternet) {
                         if (isConnectedToInternet) {
                             // do something with isConnectedToInternet value
-                            interactorImpl_.getMusicList()
+                            interactorImpl_.getResults()
                                     .observeOn(AndroidSchedulers.mainThread())
                                     .subscribeOn(Schedulers.newThread())
                                     .subscribe(this::onSuccess, this::onError);
@@ -53,11 +58,16 @@ public class IMusicListPresenter_Impl implements IMusicListPresenter {
                     private void onError(Throwable throwable) {
                     }
 
-                    private void onSuccess(List<MusicList> musicList) {
-                        iMusicListView.onFetchDataSuccess(musicList);
+                    private void onSuccess(List<Result> resulted) {
+                        iResultListView.onFetchDataSuccess(resulted);
 
                     }
                 });
     }
 }
+
+
+
+
+
 

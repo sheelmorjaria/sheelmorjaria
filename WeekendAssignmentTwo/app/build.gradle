@@ -1,11 +1,11 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'realm-android'
 android {
     compileSdkVersion 26
     buildToolsVersion "26.0.0"
     defaultConfig {
         applicationId "com.example.user.weekendassignmenttwo"
-        minSdkVersion 15
+        minSdkVersion 23
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -48,4 +48,5 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:26.+'
     compile 'com.android.support:cardview-v7:26.+'
     compile 'com.github.pwittchen:reactivenetwork-rx2:0.9.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
 }

@@ -7,6 +7,7 @@ package com.example.user.weekendassignmenttwo.model;
 public class Constants
 {
     public static final String BASE_URL="https://itunes.apple.com/";
-    public static final String MUSICLIST_API="search?term=classick&amp;amp;media=music&amp;amp;entity=song&amp;amp;limit=50";
-
+    public static final String CLASSICMUSICLIST_API="search?term=classick&amp;amp;media=music&amp;amp;entity=song&amp;amp;limit=50";
+    public static final String POPMUSICLIST_API="search?term=pop&amp;amp;media=music&amp;amp;entity=song&amp;amp;limit=50";
+    public static final String ROCKMUSICLIST_API="search?term=rock&amp;amp;media=music&amp;amp;entity=song&amp;amp;limit=50";
 }
