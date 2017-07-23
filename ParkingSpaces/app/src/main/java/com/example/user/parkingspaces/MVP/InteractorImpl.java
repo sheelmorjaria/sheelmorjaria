@@ -1,0 +1,48 @@
+package com.example.user.parkingspaces.MVP;
+
+import com.example.user.parkingspaces.RequestInterface;
+import com.example.user.parkingspaces.model.Constants;
+import com.example.user.parkingspaces.model.ParkingSpaces;
+import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+
+import java.util.List;
+
+import io.reactivex.Observable;
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+/**
+ * Created by user on 7/20/2017.
+ */
+
+public class InteractorImpl implements Interactor
+{
+
+        RequestInterface requestInterface;
+        static OkHttpClient okHttpClient;
+        static Retrofit retrofit;
+
+        @Override
+        public Observable<List<ParkingSpaces>> getParkingSpaces(){return  requestInterface.getResult();}
+
+        public InteractorImpl()
+            {
+            HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
+            httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+            okHttpClient = new OkHttpClient.Builder()
+                    .addInterceptor(httpLoggingInterceptor)
+                    .build();
+            retrofit = new Retrofit.Builder()
+                    .baseUrl(Constants.BASE_URL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                    .client(okHttpClient)
+                    .build();
+            requestInterface = retrofit.create(RequestInterface.class);
+
+        }
+
+
+}
