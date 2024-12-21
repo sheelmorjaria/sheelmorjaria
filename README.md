@@ -1,32 +1,17 @@
----
-lang: en
-title: Curriculum Vitae
-viewport: width=device-width, initial-scale=1.0, shrink-to-fit=no
----
 
-::: top
-::: {#menu .section}
 -   [PROFILE](#profile)
 -   [CONTACT](#contactdetails)
 -   [ABOUT ME](#bio)
 -   [SKILLS](#skills)
--   [EDUCATION](#education)
+-   [EDUCATION](#education%20)
 -   [EXPERIENCE](#experience)
-:::
-:::
 
-::: container
-::: leftSide
-::: {#profile .section}
 # PROFILE
 
 ## Sheel Morjaria
 
-![picture of myself](assets/img/sheel1.jpeg){height="200px"
-width="250px"}
-:::
+![picture of myself](assets/img/sheel1.jpeg)
 
-::: {#bio .section}
 # ABOUT ME
 
 A qualified individual, experienced as a Systems Engineer. Ability to
@@ -34,24 +19,17 @@ design, implement and maintain complex software applications, with
 knowledge in development, databases, and DevOps. Looking to transition
 into a Software or DevOps Engineer role to match my skills and education
 within a reputable organisation.
-:::
 
-::: {#contactdetails .section}
 # CONTACT DETAILS
 
-::: contact
+
 [](tel:+447484103481)
 [](mailto:sheelmorjaria@gmail.com)[](https://github.com/sheelmorjaria)
 [](https://www.linkedin.com/in/sheel-morjaria-29077314/)
-:::
-:::
+
 
 ------------------------------------------------------------------------
-:::
 
-::: rightSide
-::: {role="main"}
-::: {#skills .section}
 # SKILLS
 
 ## Transferable Skills
@@ -95,9 +73,7 @@ within a reputable organisation.
 -   Data Science: Numpy, Pandas, R Programming, Matplotlib
 
 ------------------------------------------------------------------------
-:::
 
-::: {#education .section}
 # EDUCATION
 
 ## PGCert Computing
@@ -142,11 +118,11 @@ within a reputable organisation.
 -   TechTrends website: package and deploy TechTrends to Kubernetes
     using a CI/CD pipeline, utilising Docker, GitHub Actions, Helm
     chart, ArgoCD for both staging and production environments
-:::
+
 
 ------------------------------------------------------------------------
 
-::: {#experience .section}
+
 # PROFESSIONAL EXPERIENCE
 
 ## Assistant Systems Engineer
@@ -169,29 +145,8 @@ within a reputable organisation.
 -   Composed scripts for IE4000 Cisco industrial switches
 -   Setup/configuration of NAS systems for disaster recovery backups
 -   Technical documentation authoring and review
-:::
+
 
 ------------------------------------------------------------------------
-:::
-:::
 
-::: footer
 © 2024. All Rights Reserved
-:::
-:::
-
-
-<!--
-**sheelmorjaria/sheelmorjaria** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-
-Here are some ideas to get you started:
-
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
