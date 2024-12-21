@@ -1,10 +1,3 @@
--   [PROFILE](#profile)
--   [CONTACT](#contactdetails)
--   [ABOUT ME](#bio)
--   [SKILLS](#skills)
--   [EDUCATION](#education%20)
--   [EXPERIENCE](#experience)
-
 # PROFILE
 
 ## Sheel Morjaria
