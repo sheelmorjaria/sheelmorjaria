@@ -23,9 +23,10 @@ within a reputable organisation.
 # CONTACT DETAILS
 
 
-[](tel:+447484103481)
-[](mailto:sheelmorjaria@gmail.com)[](https://github.com/sheelmorjaria)
-[](https://www.linkedin.com/in/sheel-morjaria-29077314/)
+tel:+447484103481
+mailto:sheelmorjaria@gmail.com
+https://github.com/sheelmorjaria
+https://www.linkedin.com/in/sheel-morjaria-29077314/
 
 
 ------------------------------------------------------------------------
@@ -71,7 +72,7 @@ within a reputable organisation.
 -   Testing: JUnit, Mockito
 -   Build tools: Maven, Gradle
 -   Data Science: Numpy, Pandas, R Programming, Matplotlib
-
+-   
 ------------------------------------------------------------------------
 
 # EDUCATION
@@ -119,9 +120,7 @@ within a reputable organisation.
     using a CI/CD pipeline, utilising Docker, GitHub Actions, Helm
     chart, ArgoCD for both staging and production environments
 
-
 ------------------------------------------------------------------------
-
 
 # PROFESSIONAL EXPERIENCE
 
@@ -145,8 +144,5 @@ within a reputable organisation.
 -   Composed scripts for IE4000 Cisco industrial switches
 -   Setup/configuration of NAS systems for disaster recovery backups
 -   Technical documentation authoring and review
-
-
+  
 ------------------------------------------------------------------------
-
-© 2024. All Rights Reserved
