@@ -13,7 +13,6 @@ https://github.com/sheelmorjaria
 
 https://www.linkedin.com/in/sheel-morjaria-29077314/  
 
-
 # ABOUT ME
 
 A qualified individual, experienced as a Systems Engineer. Ability to
@@ -26,8 +25,6 @@ within a reputable organisation.
 
 +447484103481
 sheelmorjaria@gmail.com
-
-------------------------------------------------------------------------
 
 # SKILLS
 
@@ -71,8 +68,6 @@ sheelmorjaria@gmail.com
 -   Build tools: Maven, Gradle
 -   Data Science: Numpy, Pandas, R Programming, Matplotlib
     
-------------------------------------------------------------------------
-
 # EDUCATION
 
 ## BSc(Hons) Computer Science
@@ -114,8 +109,6 @@ sheelmorjaria@gmail.com
     using a CI/CD pipeline, utilising Docker, GitHub Actions, Helm
     chart, ArgoCD for both staging and production environments
 
-------------------------------------------------------------------------
-
 # PROFESSIONAL EXPERIENCE
 
 ## Assistant Systems Engineer
@@ -138,5 +131,3 @@ sheelmorjaria@gmail.com
 -   Composed scripts for IE4000 Cisco industrial switches
 -   Setup/configuration of NAS systems for disaster recovery backups
 -   Technical documentation authoring and review
-  
-------------------------------------------------------------------------
