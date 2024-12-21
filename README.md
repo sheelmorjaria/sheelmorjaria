@@ -69,7 +69,7 @@ sheelmorjaria@gmail.com
 -   Testing: JUnit, Mockito
 -   Build tools: Maven, Gradle
 -   Data Science: Numpy, Pandas, R Programming, Matplotlib
--   
+    
 ------------------------------------------------------------------------
 
 # EDUCATION
