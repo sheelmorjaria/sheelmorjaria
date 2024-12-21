@@ -1,4 +1,3 @@
-
 -   [PROFILE](#profile)
 -   [CONTACT](#contactdetails)
 -   [ABOUT ME](#bio)
