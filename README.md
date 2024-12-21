@@ -10,7 +10,8 @@
 
 ## Sheel Morjaria
 
-![picture of myself](assets/img/sheel1.jpeg)
+https://github.com/sheelmorjaria
+https://www.linkedin.com/in/sheel-morjaria-29077314/
 
 # ABOUT ME
 
@@ -22,12 +23,8 @@ within a reputable organisation.
 
 # CONTACT DETAILS
 
-
-tel:+447484103481
-mailto:sheelmorjaria@gmail.com
-https://github.com/sheelmorjaria
-https://www.linkedin.com/in/sheel-morjaria-29077314/
-
++447484103481
+sheelmorjaria@gmail.com
 
 ------------------------------------------------------------------------
 
@@ -76,10 +73,6 @@ https://www.linkedin.com/in/sheel-morjaria-29077314/
 ------------------------------------------------------------------------
 
 # EDUCATION
-
-## PGCert Computing
-
--   The Open University *2024-2025(In Progress)*
 
 ## BSc(Hons) Computer Science
 
